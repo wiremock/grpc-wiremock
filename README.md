@@ -1,6 +1,6 @@
 [![Stability: Maintenance](https://masterminds.github.io/stability/maintenance.svg)](https://masterminds.github.io/stability/maintenance.html)
 [![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/alelorefice/grpc-wiremock?label=build&logo=docker)](https://hub.docker.com/repository/docker/alelorefice/grpc-wiremock/builds)
-[![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/alelorefice/grpc-wiremock/1.3.7?logo=docker)](https://hub.docker.com/repository/docker/alelorefice/grpc-wiremock/general)
+[![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/alelorefice/grpc-wiremock/0.0.1?logo=docker)](https://hub.docker.com/repository/docker/alelorefice/grpc-wiremock/general)
 
 ### Disclaimer
 This is a fork of [Adven27's repository](https://github.com/Adven27/grpc-wiremock). All credit goes to him and any replacement of his username is only with the purpose of kipping documentation or workflows coherent.

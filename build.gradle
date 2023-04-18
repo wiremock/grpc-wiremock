@@ -15,7 +15,7 @@ repositories {
 
 def grpcVersion = '1.54.1'
 def wiremockVersion = '2.32.0'
-def protocVersion = '3.21.7'
+def protocVersion = '3.22.2'
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'

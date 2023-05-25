@@ -1,9 +1,14 @@
-[![Stability: Maintenance](https://masterminds.github.io/stability/maintenance.svg)](https://masterminds.github.io/stability/maintenance.html)
-[![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/adven27/grpc-wiremock?label=build&logo=docker)](https://hub.docker.com/repository/docker/adven27/grpc-wiremock/builds)
-[![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/adven27/grpc-wiremock/1.3.7?logo=docker)](https://hub.docker.com/repository/docker/adven27/grpc-wiremock/general)
+# WireMock Adapter for gRPC
 
-# Overview
-grpc-wiremock is a **mock server** for **GRPC** services implemented as a wrapper around the [WireMock](http://wiremock.org) http server.
+[![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
+
+> **DISCLAIMER:** This repository was forked from [Adven27/grpc-wiremock](https://github.com/Adven27/grpc-wiremock) which was archived by the maintainer.
+> This fork is used to preserve the repository, and to make it available for experimental use and contributions.
+> See [wiremock/wiremock #2148](https://github.com/wiremock/wiremock/issues/2148) for the feature request about providing an officially supported implementation
+> (or updating this one)
+
+_grpc-wiremock_ is a **mock server** for **GRPC** services implemented as a wrapper around the [WireMock](https://wiremock.org) HTTP server.
+It is implementated in Java and runs as a standalone proxy container.
 
 ## How It Works
 

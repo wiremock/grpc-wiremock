@@ -1,5 +1,4 @@
 # WireMock Adapter for gRPC
-=======
 
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
 
@@ -21,13 +20,16 @@ It is implementated in Java and runs as a standalone proxy container.
 1. GRPC server works on `tcp://localhost:50000`
 2. WireMock server works on `http://localhost:8888`
 
-## Quick Usage
-1) Run 
+## Quick Start
+
+### Run
+
 ```posh
 docker run -p 8888:8888 -p 50000:50000 -v $(pwd)/example/proto:/proto -v $(pwd)/example/wiremock:/wiremock wiremock/grpc-wiremock
 ```
 
-2) Stub 
+### Stub
+
 ```posh
 curl -X POST http://localhost:8888/__admin/mappings \
   -d '{
@@ -51,12 +53,14 @@ curl -X POST http://localhost:8888/__admin/mappings \
 }'
 ```
 
-3) Check 
+### Check
+
 ```posh
 grpcurl -H 'withAmount: 100.0' -plaintext -d '{"user_id": 1, "currency": "EUR"}' localhost:50000 api.wallet.BalanceService/getUserBalance
 ```
 
 Should get response:
+
 ```json
 {
   "balance": {
@@ -73,9 +77,10 @@ Should get response:
   }
 }
 ```
+
 ## Stubbing
 
-Stubbing should be done via [WireMock JSON API](http://wiremock.org/docs/stubbing/) 
+Stubbing should be done via [WireMock JSON API](http://wiremock.org/docs/stubbing/)
 
 ### Error mapping
 
@@ -96,6 +101,7 @@ Default error (not `200 OK`) mapping is based on https://github.com/googleapis/g
 | 504 Gateway Timeout       | DEADLINE_EXCEEDED  |
 
 And could be overridden or augmented by overriding or augmenting the following properties:
+
 ```yaml
 grpc:
   error-code-by:
@@ -113,14 +119,17 @@ grpc:
         503: UNAVAILABLE
         504: DEADLINE_EXCEEDED
 ```
+
 For example:
+
 ```posh
 docker run \
     -e GRPC_ERRORCODEBY_HTTP_STATUSCODE_400=OUT_OF_RANGE \
     -e GRPC_ERRORCODEBY_HTTP_STATUSCODE_510=DATA_LOSS \
     wiremock/grpc-wiremock
 ```
-## How To:
+
+## How To
 
 ### 1. Configure gRPC server
 
@@ -149,7 +158,7 @@ prefixed by `wiremock_`:
 docker run -e WIREMOCK_DISABLE-REQUEST-LOGGING -e WIREMOCK_PORT=0 wiremock/grpc-wiremock
 ```
 
-### 3. Mock server-side streaming:
+### 3. Mock server-side streaming
 
 Given the service:
 
@@ -159,7 +168,7 @@ service WalletService {
 }
 ```
 
-Then the following stub may be provided, where `response.headers.streamSize` specifies 
+Then the following stub may be provided, where `response.headers.streamSize` specifies
 how many responses should be returned during the stream (`1` - if absent).
 
 The current response iteration number is available in `request.headers.streamCursor`:
@@ -228,11 +237,13 @@ Also in docker-compose:
 
 ### 6. Use in load testing
 
-To increase performance some Wiremock related options may be tuned either directly or by enabling the "load" profile. 
+To increase performance some Wiremock related options may be tuned either directly or by enabling the "load" profile.
 Next two commands are identical:
+
 ```posh
 docker run -e SPRING_PROFILES_ACTIVE=load wiremock/grpc-wiremock
 ```
+
 ```posh
 docker run \
   -e WIREMOCK_NO-REQUEST-JOURNAL \

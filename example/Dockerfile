@@ -1,4 +1,4 @@
-FROM adven27/grpc-wiremock
+FROM wiremock/grpc-wiremock
 # copy our own proto files
 COPY ./proto/*.proto /proto/
 # Start image faster by compiling everything when we build the image

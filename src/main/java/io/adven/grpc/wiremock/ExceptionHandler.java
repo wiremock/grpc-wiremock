@@ -25,8 +25,8 @@ public class ExceptionHandler implements ServerInterceptor {
 
     private class ExceptionHandlingServerCallListener<ReqT, RespT>
         extends ForwardingServerCallListener.SimpleForwardingServerCallListener<ReqT> {
-        private ServerCall<ReqT, RespT> serverCall;
-        private Metadata metadata;
+        private final ServerCall<ReqT, RespT> serverCall;
+        private final Metadata metadata;
 
         ExceptionHandlingServerCallListener(
             ServerCall.Listener<ReqT> listener, ServerCall<ReqT, RespT> serverCall, Metadata metadata

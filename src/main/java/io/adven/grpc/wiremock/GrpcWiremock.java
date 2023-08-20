@@ -74,12 +74,12 @@ public class GrpcWiremock implements CommandLineRunner {
             if (server.getMaxHeaderListSize() != null) {
                 int val = Math.toIntExact(server.getMaxHeaderListSize().toBytes());
                 LOG.info("Set maxHeaderListSize = {}", val);
-                builder.maxHeaderListSize(val);
+                builder.maxInboundMetadataSize(val);
             }
             if (server.getMaxMessageSize() != null) {
                 int val = Math.toIntExact(server.getMaxMessageSize().toBytes());
                 LOG.info("Set maxMessageSize = {}", val);
-                builder.maxMessageSize(val);
+                builder.maxInboundMessageSize(val);
             }
             if (server.getMaxInboundMetadataSize() != null) {
                 int val = Math.toIntExact(server.getMaxInboundMetadataSize().toBytes());

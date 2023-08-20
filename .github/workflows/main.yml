@@ -16,9 +16,9 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: alelorefice/grpc-wiremock:${{ github.ref_name }}
+          tags: wiremock/grpc-wiremock:${{ github.ref_name }}
       - name: Build and push latest
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: alelorefice/grpc-wiremock:latest
+          tags: wiremock/grpc-wiremock:latest

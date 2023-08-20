@@ -24,7 +24,7 @@ It is implementated in Java and runs as a standalone proxy container.
 ## Quick Usage
 1) Run 
 ```posh
-docker run -p 8888:8888 -p 50000:50000 -v $(pwd)/example/proto:/proto -v $(pwd)/example/wiremock:/wiremock alelorefice/grpc-wiremock
+docker run -p 8888:8888 -p 50000:50000 -v $(pwd)/example/proto:/proto -v $(pwd)/example/wiremock:/wiremock wiremock/grpc-wiremock
 ```
 
 2) Stub 
@@ -118,7 +118,7 @@ For example:
 docker run \
     -e GRPC_ERRORCODEBY_HTTP_STATUSCODE_400=OUT_OF_RANGE \
     -e GRPC_ERRORCODEBY_HTTP_STATUSCODE_510=DATA_LOSS \
-    alelorefice/grpc-wiremock
+    wiremock/grpc-wiremock
 ```
 ## How To:
 
@@ -137,7 +137,7 @@ GRPC_SERVER_MAXINBOUNDMESSAGESIZE
 Could be used like this:
 
 ```posh
-docker run -e GRPC_SERVER_MAXHEADERLISTSIZE=1000 alelorefice/grpc-wiremock
+docker run -e GRPC_SERVER_MAXHEADERLISTSIZE=1000 wiremock/grpc-wiremock
 ```
 
 ### 2. Configure WireMock server
@@ -146,7 +146,7 @@ WireMock server may be configured by passing [command line options](http://wirem
 prefixed by `wiremock_`:
 
 ```posh
-docker run -e WIREMOCK_DISABLE-REQUEST-LOGGING -e WIREMOCK_PORT=0 alelorefice/grpc-wiremock
+docker run -e WIREMOCK_DISABLE-REQUEST-LOGGING -e WIREMOCK_PORT=0 wiremock/grpc-wiremock
 ```
 
 ### 3. Mock server-side streaming:
@@ -206,12 +206,15 @@ See an [example](/example/Dockerfile)
 ### 5. Use with snappy compresser/decompresser
 
 Snappy support can be enabled using `EXTERNAL_CODECS` env variable as follows:
+
 ```posh
-docker run -e EXTERNAL_CODECS="snappy, another" alelorefice/grpc-wiremock
+docker run -e EXTERNAL_CODECS="snappy, another" wiremock/grpc-wiremock
 ```
+
 Also in docker-compose:
+
 ```posh
-    image: alelorefice/grpc-wiremock
+    image: wiremock/grpc-wiremock
     ports:
       - "12085:50000" # grpc port
       - "8088:8888" # http serve port
@@ -220,6 +223,7 @@ Also in docker-compose:
     environment:
       - EXTERNAL_CODECS=snappy
 ```
+
 <sub>*gzip compression supported by default</sub>
 
 ### 6. Use in load testing
@@ -227,7 +231,7 @@ Also in docker-compose:
 To increase performance some Wiremock related options may be tuned either directly or by enabling the "load" profile. 
 Next two commands are identical:
 ```posh
-docker run -e SPRING_PROFILES_ACTIVE=load alelorefice/grpc-wiremock
+docker run -e SPRING_PROFILES_ACTIVE=load wiremock/grpc-wiremock
 ```
 ```posh
 docker run \
@@ -235,7 +239,7 @@ docker run \
   -e WIREMOCK_DISABLE-REQUEST-LOGGING \
   -e WIREMOCK_ASYNC-RESPONSE-ENABLED \
   -e WIREMOCK_ASYNC-RESPONSE-THREADS=10 \
-  alelorefice/grpc-wiremock
+  wiremock/grpc-wiremock
 ```
 
 ### 7. Preserving proto field names in stubs
@@ -255,5 +259,5 @@ By default, stub mappings must have proto fields references in lowerCamlCase, e.
 To preserve proto field names the following env variable could be used:
 
 ```posh
-docker run -e JSON_PRESERVING_PROTO_FIELD_NAMES=true alelorefice/grpc-wiremock
+docker run -e JSON_PRESERVING_PROTO_FIELD_NAMES=true wiremock/grpc-wiremock
 ```

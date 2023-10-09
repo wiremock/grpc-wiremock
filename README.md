@@ -2,10 +2,13 @@
 
 [![Stability: Experimental](https://masterminds.github.io/stability/experimental.svg)](https://masterminds.github.io/stability/experimental.html)
 
-> **DISCLAIMER:** This repository was forked from [Adven27/grpc-wiremock](https://github.com/Adven27/grpc-wiremock) which was archived by the maintainer.
-> This fork is used to preserve the repository, and to make it available for experimental use and contributions.
-> See [wiremock/wiremock #2148](https://github.com/wiremock/wiremock/issues/2148) for the feature request about providing an officially supported implementation
-> (or updating this one)
+> **WARNING:** There is a new official [gRPC extension for WireMock](https://github.com/wiremock/wiremock-grpc-extension) under active development.
+> The extension allows implementing proper matching and gRPC-specific functionality, instead of just using a converter bridge.
+> We are looking for feedback and contributions!
+> See [wiremock/wiremock #2148](https://github.com/wiremock/wiremock/issues/2148) for the feature request about providing an officially supported implementation.
+> 
+> **CREDITS:** This repository was forked from [Adven27/grpc-wiremock](https://github.com/Adven27/grpc-wiremock) which was archived by the maintainer.
+> This fork is used to preserve the repository, and to make it available for experimental use.
 
 _grpc-wiremock_ is a **mock server** for **GRPC** services implemented as a wrapper around the [WireMock](https://wiremock.org) HTTP server.
 It is implementated in Java and runs as a standalone proxy container.

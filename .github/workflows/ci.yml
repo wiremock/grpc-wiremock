@@ -1,0 +1,17 @@
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build_docker_image:
+    name: Build Docker image
+    runs-on: ubuntu-latest
+      - name: Build
+        uses: docker/build-push-action@v4
+        with:
+          push: false
+          tags: wiremock/grpc-wiremock:${{ github.ref_name }}
+ 
